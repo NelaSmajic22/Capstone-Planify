@@ -13,3 +13,5 @@ A web app to help students organize tasks and utilize study tools all in one app
 1. Clone the repo:
    ```bash
    git clone https://github.com/NelaSmajic22/Capstone-Planify.git
+2. Copy and Paste create_db.sql to set up database student_app_db
+3. Get started!
