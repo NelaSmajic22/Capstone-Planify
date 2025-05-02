@@ -70,6 +70,13 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
     <title>Study Flashcards - <?= htmlspecialchars($deck['deck_name']) ?></title>
     <link rel="stylesheet" type="text/css" href="styles.css?v=1">
     <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light);
+    padding: 0;
+    margin: 0;
+    padding-top: 100px;
+    }
     .flashcard-container {
         perspective: 1000px;
         margin: 40px auto;
@@ -330,7 +337,7 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
             this.classList.toggle('flipped');
         });
         
-// keyboard shortcuts testing!!
+// keyboard shortcuts// incorrect and correct kinda control iffy
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowRight' || e.key === 'd') {
                 document.querySelector('button[value="correct"]').click();

@@ -15,7 +15,7 @@ $page_title = "Study Tips";
             background-color: var(--light);
             padding: 0;
             margin: 0;
-            padding-top: 80px;
+            padding-top: 100px;
         }
         
         .content {
@@ -34,13 +34,7 @@ $page_title = "Study Tips";
             font-size: 1.8rem;
         }
 
-body {
-            margin: 0;
-            padding-top: 100px;
-            background-color: var(--light);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-        }
+
         
         .container {
             max-width: 800px;

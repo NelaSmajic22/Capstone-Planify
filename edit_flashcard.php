@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: var(--light);
             padding: 0;
             margin: 0;
-            padding-top: 100px;
+            padding-top: 80px;
         }
         
         .content {

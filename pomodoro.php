@@ -20,7 +20,7 @@ require "user_session.php";
             background-color: var(--light);
             padding: 0;
             margin: 0;
-            padding-top: 80px;
+            padding-top: 60px;
 
         }
         
@@ -41,6 +41,8 @@ require "user_session.php";
             text-align: center;
             width: 100%;
             max-width: 350px;
+            padding: 10px;
+            padding-top: 20px;
         }
         
         .timer-display {
@@ -77,6 +79,11 @@ require "user_session.php";
             cursor: pointer;
             transition: all 0.2s ease;
             font-weight: bold;
+        }
+        .controls button {
+            flex: 1; 
+            max-width: 130px; 
+            text-align: center;
         }
         
         #startBtn { 
