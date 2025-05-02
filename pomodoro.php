@@ -10,17 +10,29 @@ require "user_session.php";
     <title>Work/Break Timer</title>
     <link rel="stylesheet" type="text/css" href="styles.css?v=1">
     <style>     
-
+    
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            background-color: var(--light);
+            padding: 0;
             margin: 0;
             padding-top: 80px;
-            background-color: var(--light);
+
         }
+        
+        .content {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
         
         .timer-container {
             background: white;

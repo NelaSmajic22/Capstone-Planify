@@ -1,7 +1,7 @@
 <?php
 require "user_session.php";
 
-// check if flashcard_id is provided
+// check 
 if (!isset($_GET['flashcard_id']) || !is_numeric($_GET['flashcard_id'])) {
     header("Location: view_subjects.php");
     exit();
@@ -9,7 +9,7 @@ if (!isset($_GET['flashcard_id']) || !is_numeric($_GET['flashcard_id'])) {
 
 $flashcard_id = $_GET['flashcard_id'];
 
-// verify flashcard belongs to user
+// verify
 $query = "SELECT f.deck_id FROM flashcards f
           JOIN decks d ON f.deck_id = d.id
           WHERE f.id = ? AND d.user_id = ?";
@@ -26,7 +26,7 @@ if ($result->num_rows === 0) {
 $deck = $result->fetch_assoc();
 $deck_id = $deck['deck_id'];
 
-// delete flashcard
+// delete
 $delete_query = "DELETE FROM flashcards WHERE id = ?";
 $delete_stmt = $db->prepare($delete_query);
 $delete_stmt->bind_param("i", $flashcard_id);

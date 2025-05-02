@@ -37,22 +37,12 @@ $completed_tasks = $completed_tasks_result->fetch_all(MYSQLI_ASSOC);
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --success: #4cc9f0;
-            --danger: #f72585;
-            --warning: #f8961e;
-            --light: #f8f9fa;
-            --dark: #212529;
-        }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light);
             padding: 0;
             margin: 0;
-            padding-top: 80px;
+            padding-top: 100px;
         }
         
         .content {
@@ -221,7 +211,7 @@ $completed_tasks = $completed_tasks_result->fetch_all(MYSQLI_ASSOC);
         
         @media (max-width: 768px) {
             body {
-                padding-top: 70px;
+                padding-top: 80px;
             }
             
             .content {

@@ -1,0 +1,34 @@
+Nela Smajic, 01046482
+
+https://github.com/NelaSmajic22/Capstone-Planify.git
+
+n/a
+
+README.md - project documentation
+styles.css - application sytlesheet
+open_db.php - database connection
+user_session.php - checks user login, naviagtion bar setup, ajax library
+logout.php - logs the user out
+register.php - register the users
+login.php - login the users
+dashboard.php - Main application after user login
+tasks.php - task management
+update_task_status.php - update the task update_task_status
+view_subject.php - to view the flashcard subjects
+add_subject.php - add subject 
+edit_subject.php - edit subject name
+delete_subject.php - deletes the subject and all the decks/flashcards
+decks.php - view the decks and mastery progress displayed for each deck under the subject
+add_deck.php - add a new deck
+edit_deck.php - edit the deck name and flashcards displayed inside the deck are shown
+delete_deck.php - delete deck and all flashcards inside
+create_flashcard.php - create flashcard
+edit_flashcard.php - edit the flashcard/add more flashcards
+delete_flashcard.php - delete flashcard
+flashcard.php - interactive flashcards, shuffle, update progress
+pomodoro.php - the pomodoro study timer 
+study_tips.php - form of study tips 
+create_db.sql - database schema creation script
+
+
+

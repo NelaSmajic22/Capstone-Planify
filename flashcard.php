@@ -70,16 +70,8 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
     <title>Study Flashcards - <?= htmlspecialchars($deck['deck_name']) ?></title>
     <link rel="stylesheet" type="text/css" href="styles.css?v=1">
     <style>
-                :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --success: #4cc9f0;
-            --danger: #f72585;
-            --warning: #f8961e;
-            --light: #f8f9fa;
-            --dark: #212529;
-        }
-        
+
+       
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light);
