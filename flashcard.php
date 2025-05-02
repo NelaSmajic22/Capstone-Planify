@@ -70,7 +70,6 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
     <title>Study Flashcards - <?= htmlspecialchars($deck['deck_name']) ?></title>
     <link rel="stylesheet" type="text/css" href="styles.css?v=1">
     <style>
-    /* Flashcard Container */
     .flashcard-container {
         perspective: 1000px;
         margin: 40px auto;
@@ -78,7 +77,6 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
         width: 100%;
     }
     
-    /* Flashcard Base Styles */
     .flashcard {
         position: relative;
         width: 100%;
@@ -124,7 +122,6 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
         border: 1px solid rgba(0, 0, 0, 0.1);
     }
     
-    /* Flashcard Content */
     .flashcard-content {
         font-size: 1.8rem;
         line-height: 1.6;
