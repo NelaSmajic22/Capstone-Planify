@@ -70,149 +70,203 @@ $_SESSION['last_subject_id'] = $deck['subject_id'];
     <title>Study Flashcards - <?= htmlspecialchars($deck['deck_name']) ?></title>
     <link rel="stylesheet" type="text/css" href="styles.css?v=1">
     <style>
+    /* Flashcard Container */
+    .flashcard-container {
+        perspective: 1000px;
+        margin: 40px auto;
+        max-width: 650px;
+        width: 100%;
+    }
+    
+    /* Flashcard Base Styles */
+    .flashcard {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        transform-style: preserve-3d;
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        cursor: pointer;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: white;
+    }
+    
+    .flashcard.flipped {
+        transform: rotateY(180deg);
+    }
+    
+    /* Front and Back Faces */
+    .flashcard-front, .flashcard-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        box-sizing: border-box;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    
+    .flashcard-front {
+        background: white;
+        color: var(--dark);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .flashcard-back {
+        background: white;
+        transform: rotateY(180deg);
+        color: var(--dark);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Flashcard Content */
+    .flashcard-content {
+        font-size: 1.8rem;
+        line-height: 1.6;
+        text-align: center;
+        width: 100%;
+        padding: 30px;
+        word-wrap: break-word;
+        overflow-y: auto;
+        max-height: 100%;
+    }
+    
+    .flashcard-back .flashcard-content {
+        color: var(--dark);
+    }
+    
+  
+    .flashcard-indicator {
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        color: inherit;
+    }
+    
 
-       
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light);
-            padding: 0;
-            margin: 0;
-            padding-top: 80px;
-        }
-        
-        .content {
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: var(--primary-dark);
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 1.8rem;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .decks-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            color: var(--primary-dark);
-        }
-        
-        .mastery-meter {
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-        
-        .mastery-progress {
-            height: 100%;
-            background: #4CAF50;
-            width: <?= $mastery_percentage ?>%;
-            transition: width 0.3s ease;
-        }
-        
-        .study-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-        
-        .btn-correct {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .btn-incorrect {
-            background-color: #f72585;
-            color: white;
-        }
-        
-        .flashcard-container {
-            perspective: 1000px;
-            margin: 30px auto;
-            max-width: 600px;
-        }
-        
+    .study-controls {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+    }
+    
+    .btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .btn-correct {
+        background-color: #4cc9f0;
+        color: white;
+    }
+    
+    .btn-correct:hover {
+        background-color: #3ab7dc;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(76, 201, 240, 0.3);
+    }
+    
+    .btn-incorrect {
+        background-color: #f72585;
+        color: white;
+    }
+    
+    .btn-incorrect:hover {
+        background-color: #e3126f;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(247, 37, 133, 0.3);
+    }
+    
+
+    .mastery-meter {
+        height: 12px;
+        background: #e0e0e0;
+        border-radius: 6px;
+        margin: 15px 0;
+        overflow: hidden;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .mastery-progress {
+        height: 100%;
+        background: #4CAF50;
+        width: <?= $mastery_percentage ?>%;
+        transition: width 0.5s ease;
+    }
+    
+
+    .deck-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .deck-header h1 {
+        font-size: 2.2rem;
+        color: var(--primary-dark);
+        margin-bottom: 10px;
+    }
+    
+ 
+    @media (max-width: 768px) {
         .flashcard {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-            cursor: pointer;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
-        
-        .flashcard-front, .flashcard-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            overflow: auto;
-        }
-        
-        .flashcard-back {
-            background: #f9f9f9;
-            transform: rotateY(180deg);
+            height: 350px;
         }
         
         .flashcard-content {
             font-size: 1.5rem;
-            line-height: 1.6;
-            text-align: center;
-            width: 100%;
             padding: 20px;
-            color: #333;
-            word-wrap: break-word;
         }
         
-        .deck-header {
-            text-align: center;
-            margin-bottom: 20px;
+        .study-controls {
+            flex-direction: column;
+            gap: 15px;
         }
         
-        .deck-actions {
-            margin-top: 20px;
-            display: flex;
+        .btn {
+            width: 100%;
             justify-content: center;
-            gap: 10px;
         }
-    </style>
+    }
+    
+    @media (max-width: 480px) {
+        .flashcard {
+            height: 300px;
+        }
+        
+        .flashcard-content {
+            font-size: 1.3rem;
+        }
+    }
+    
+    /* Flip Animation Hint */
+    .flip-hint {
+        text-align: center;
+        margin-top: 15px;
+        color: var(--gray);
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+</style>
 </head>
 <body>
     

@@ -48,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Edit Flashcard</title>
     <link rel="stylesheet" type="text/css" href="styles.css?v=1">
     <style>
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light);
