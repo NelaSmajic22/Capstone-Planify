@@ -339,7 +339,21 @@ textarea.form-control {
 
 /* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
-  .hamburger {
+  .top-bar { /* testing */
+    flex-direction: cloumn;
+    align-items: stretch;
+    padding: 15px;
+  }
+  .logo { /* testing */
+    order: -1;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .nav-container {
+    flex-direction: column;
+    align-items : stretch;
+  }
+  .hamburger { 
     display: block;
     position: absolute;
     right: 30px;
